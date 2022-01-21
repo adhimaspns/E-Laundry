@@ -22,4 +22,5 @@ use Illuminate\Support\Facades\Route;
     Route::post('/paket-laundry', 'PaketLaundryController@store')->name('laundry.store');
     Route::get('/paket-laundry/{kategori}', 'PaketLaundryController@listKategori');
     Route::get('/paket-laundry/jenis-laundry/{id}/edit', 'PaketLaundryController@edit');
+    Route::patch('/paket-laundry/{id}', 'PaketLaundryController@update')->name('laundry.update');
 
