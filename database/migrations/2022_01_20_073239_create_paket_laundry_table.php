@@ -15,7 +15,7 @@ class CreatePaketLaundryTable extends Migration
     {
         Schema::create('paket_laundry', function (Blueprint $table) {
             $table->id('id_pkt_lndry');
-            $table->string('nama_paket');
+            $table->string('jenis_laundry');
             $table->string('harga');
             $table->string('kategori');
             $table->timestamps();
