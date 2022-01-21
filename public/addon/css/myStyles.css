@@ -2,3 +2,7 @@
 .navbar-brand {
     font-size: 25px !important;
 }
+
+.margin-btn {
+    margin: 0px 0px 20px;
+}
