@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
     //! Paket Laundry 
     Route::get('/paket-laundry', 'PaketLaundryController@index')->name('laundry.index');
     Route::post('/paket-laundry', 'PaketLaundryController@store')->name('laundry.store');
+    Route::get('/paket-laundry/{kategori}', 'PaketLaundryController@listKategori');
 
