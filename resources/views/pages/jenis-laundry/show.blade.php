@@ -42,6 +42,9 @@
                                         <label>Harga /Kg</label>
                                         <input type="text" id="harga" name="harga" class="form-control">
                                     </div>
+
+                                    <!-- Hidden -->
+                                    <input type="hidden" name="paket_lndry_id" value="{{ $id }}">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
