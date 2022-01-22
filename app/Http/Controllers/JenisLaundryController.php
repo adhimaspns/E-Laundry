@@ -114,6 +114,9 @@ class JenisLaundryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jenis_laundry  = JenisLaundry::findOrFail($id);
+        $jenis_laundry->delete();
+
+        return redirect()->back();
     }
 }
