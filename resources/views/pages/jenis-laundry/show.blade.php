@@ -72,7 +72,7 @@
                             
                             <tr>
                                 <td>{{ $no }}</td>
-                                <td>{{ $jl->nama_paket}}</td>
+                                <td>{{ $jl->jenis_laundry}}</td>
                                 <td>
                                     <a href="{{ url('jenis-laundry/' . $jl->id_pkt_lndry) }}" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>
                                 </td>
