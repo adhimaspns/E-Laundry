@@ -17,11 +17,11 @@ class CreateTransaksiTable extends Migration
             $table->id('id_transaksi');
             $table->string('no_transaksi');
             $table->string('nama_customer');
-            $table->date('tgl_awal');
-            $table->date('tgl_akhir');
-            $table->integer('ongkir');
-            $table->string('status');
-            $table->integer('grand_total');
+            $table->date('tgl_awal')->nullable();
+            $table->date('tgl_akhir')->nullable();
+            $table->integer('ongkir')->nullable();
+            $table->string('status')->nullable();
+            $table->integer('grand_total')->nullable();
             $table->timestamps();
         });
     }
