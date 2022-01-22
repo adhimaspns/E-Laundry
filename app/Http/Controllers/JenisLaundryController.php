@@ -69,7 +69,7 @@ class JenisLaundryController extends Controller
     public function show($id)
     {
         $jenis_laundry  = JenisLaundry::where('paket_laundry_id', $id)->get();
-        $paket_laundry  = PaketLaundry::with(['jenis_laundry'])->first();
+        $paket_laundry  = PaketLaundry::where('id_pkt_lndry', $id)->with(['jenis_laundry'])->first();
 
         return view('pages.jenis-laundry.show', compact('jenis_laundry', 'paket_laundry'));
     }
