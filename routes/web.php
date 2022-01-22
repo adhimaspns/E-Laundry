@@ -29,5 +29,6 @@ use Illuminate\Support\Facades\Route;
     Route::resource('/jenis-laundry', 'JenisLaundryController');
 
     //! Transaksi
-    Route::resource('/transaksi', 'TransaksiController'); 
+    Route::resource('/transaksi', 'TransaksiController');
+    Route::get('transaksi-json', 'TransaksiController@transaksiJson'); 
 
