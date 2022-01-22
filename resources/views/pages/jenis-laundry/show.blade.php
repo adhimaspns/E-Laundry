@@ -79,7 +79,7 @@
                                 <td>{{ $jl->jenis_laundry}}</td>
                                 <td>Rp. {{ number_format($jl->harga,0,',','.')}}</td>
                                 <td>
-                                    <a href="{{ url('jenis-laundry/' . $jl->id_jns_lndry) }}" class="btn btn-sm btn-warning"><i class="fa fa-pen"></i></a>
+                                    <a href="{{ url('jenis-laundry/' . $jl->id_jns_lndry . '/edit') }}" class="btn btn-sm btn-warning"><i class="fa fa-pen"></i></a>
                                     <form action="{{ url('jenis-laundry/'. $jl->id_jns_lndry) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
