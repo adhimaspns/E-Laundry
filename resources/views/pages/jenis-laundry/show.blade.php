@@ -32,7 +32,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ url('jenis-laundry') }}" method="post">
+                                <form action="{{ route('jenis-laundry.store') }}" method="post">
                                     @csrf
                                     <div class="form-group">
                                         <label>Jenis Laundry</label>
