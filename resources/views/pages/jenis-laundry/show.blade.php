@@ -54,6 +54,10 @@
                         </div>
                     </div>
                 </div>
+
+                <br>
+                Paket Laundry : <span class="badge badge-pill badge-success margin-btn">{{ $paket_laundry->nama_paket }}</span>
+
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
