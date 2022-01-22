@@ -40,8 +40,8 @@ class JenisLaundryController extends Controller
     {
         //! Validasi
         $rules  = [
-            'nama_paket'    => 'required',
-            'harga'         => 'required'
+            'jenis_laundry'     => 'required',
+            'harga'             => 'required'
         ];
 
         $pesan  = [
@@ -50,10 +50,14 @@ class JenisLaundryController extends Controller
 
         $this->validate($request, $rules, $pesan);
 
-        //! Insert Data
+        // ! Insert Data
         JenisLaundry::create([
-            'nama_paket'    => ''
-        ]); 
+            'paket_laundry_id' => $request->paket_lndry_id,
+            'jenis_laundry'    => $request->jenis_laundry,
+            'harga'            => preg_replace("/[^0-9]/", "", $request->harga)
+        ]);
+        
+        return redirect()->back();
     }
 
     /**
@@ -64,10 +68,7 @@ class JenisLaundryController extends Controller
      */
     public function show($id)
     {
-        // $paket_laundry = PaketLaundry::where('id_pkt_lndry', $id)->first();
-        $jenis_laundry = JenisLaundry::where('paket_laundry_id', '==', $id)->get();
 
-        return view('pages.jenis-laundry.show', compact('jenis_laundry'));
     }
 
     /**
