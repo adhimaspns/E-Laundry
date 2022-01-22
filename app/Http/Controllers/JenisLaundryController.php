@@ -68,7 +68,10 @@ class JenisLaundryController extends Controller
      */
     public function show($id)
     {
+        $jenis_laundry  = JenisLaundry::where('paket_laundry_id', $id)->get();
+        $paket_lndry_id = $id;
 
+        return view('pages.jenis-laundry.show', compact('jenis_laundry', 'id'));
     }
 
     /**
