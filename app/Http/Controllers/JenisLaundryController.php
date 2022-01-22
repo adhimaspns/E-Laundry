@@ -96,7 +96,14 @@ class JenisLaundryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jenis_laundry = JenisLaundry::findOrFail($id);
+
+        $jenis_laundry->update([
+            'jenis_laundry'     => $request->jenis_laundry,
+            'harga'             => preg_replace("/[^0-9]/", "", $request->harga)
+        ]);
+
+        return redirect('jenis-laundry/'. $jenis_laundry->paket_laundry_id);
     }
 
     /**
