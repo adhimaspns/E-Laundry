@@ -14,4 +14,9 @@ class PaketLaundry extends Model
     ];
 
     protected $primaryKey = 'id_pkt_lndry';
+
+    public function jenis_laundry()
+    {
+        return $this->hasMany(JenisLaundry::class, 'paket_laundry_id', 'id_pkt_lndry');
+    }
 }
