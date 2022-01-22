@@ -82,7 +82,9 @@ class JenisLaundryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jenis_laundry = JenisLaundry::findOrFail($id);
+
+        return view('pages.jenis-laundry.edit', compact('jenis_laundry'));
     }
 
     /**
