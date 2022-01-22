@@ -28,3 +28,6 @@ use Illuminate\Support\Facades\Route;
     //! Jenis Laundry
     Route::resource('/jenis-laundry', 'JenisLaundryController');
 
+    //! Transaksi
+    Route::resource('/transaksi', 'TransaksiController'); 
+
