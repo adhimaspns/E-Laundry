@@ -20,6 +20,7 @@ class CreateTransaksiTable extends Migration
             $table->date('tgl_awal');
             $table->date('tgl_akhir');
             $table->integer('ongkir');
+            $table->integer('status');
             $table->integer('grand_total');
             $table->timestamps();
         });
