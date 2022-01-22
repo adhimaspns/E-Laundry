@@ -44,7 +44,7 @@
                                     </div>
 
                                     <!-- Hidden -->
-                                    <input type="hidden" name="paket_lndry_id" value="{{ $id }}">
+                                    <input type="hidden" name="paket_lndry_id" value="{{ $paket_laundry->id_pkt_lndry }}">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
