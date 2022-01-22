@@ -9,6 +9,7 @@ class JenisLaundry extends Model
     protected $table        = 'jenis_laundry';
 
     protected $fillable     = [
+        'paket_laundry_id',
         'jenis_laundry',
         'harga'
     ];
