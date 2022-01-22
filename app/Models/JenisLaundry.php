@@ -15,4 +15,9 @@ class JenisLaundry extends Model
     ];
 
     protected $primaryKey   = 'id_jns_lndry';
+
+    public function paket_laundry()
+    {
+        return $this->belongsTo(PaketLaundry::class, 'paket_laundry_id', 'id_pkt_lndry');
+    }
 }
