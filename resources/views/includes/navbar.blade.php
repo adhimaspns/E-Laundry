@@ -11,7 +11,7 @@
                     <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item @yield('transaksi')">
-                    <a class="nav-link" href="#">Transaksi</a>
+                    <a class="nav-link" href="{{ url('transaksi')}}">Transaksi</a>
                 </li>
                 <li class="nav-item @yield('laporan')">
                     <a class="nav-link" href="#">Laporan</a>
@@ -22,7 +22,6 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item @yield('paket-laundry')" href="{{ route('laundry.index') }}">Paket Laundry</a>
-                        {{-- <a class="dropdown-item @yield('jenis-laundry')" href="{{ route('jenis-laundry.index') }}">Jenis Laundry</a> --}}
                         <a class="dropdown-item @yield('jenis-laundry')" href="{{ url('jenis-laundry') }}">Jenis Laundry</a>
                     </div>
                 </li>
