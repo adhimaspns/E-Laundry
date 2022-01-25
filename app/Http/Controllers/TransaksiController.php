@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\DetailTransaksi;
 use App\Models\JenisLaundry;
+use App\Models\Laporan;
 use App\Models\PaketLaundry;
 use DataTables;
 use App\Models\Transaksi;
@@ -74,6 +75,14 @@ class TransaksiController extends Controller
         $transaksi->status          = "Diproses";
 
         $transaksi->save();
+
+        //! Buat Data Laporan
+        Laporan::create([
+            'no_transaksi'          => $no_transaksi_baru,
+            'nama_customer'         => $request->nama_customer,
+            'tgl_awal'              => Carbon::now(),
+            'status'                => "Diproses"
+        ]);
 
         return redirect('transaksi/checkout/'. $transaksi->no_transaksi);
     }
