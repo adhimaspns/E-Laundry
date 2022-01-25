@@ -16,7 +16,7 @@ class CreateDetailLaporanTable extends Migration
         Schema::create('detail_laporan', function (Blueprint $table) {
             $table->id('id_dtl_laporan');
             $table->string('transaksi_id');
-            $table->string('paket_laundry_id');
+            $table->string('jenis_laundry_id');
             $table->integer('jml');
             $table->integer('harga');
             $table->integer('subtotal');
