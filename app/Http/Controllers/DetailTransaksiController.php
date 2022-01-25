@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailLaporan;
 use Carbon\Carbon;
 use App\Models\DetailTransaksi;
 use App\Models\JenisLaundry;
+use App\Models\Laporan;
 use App\Models\PaketLaundry;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -30,6 +32,7 @@ class DetailTransaksiController extends Controller
         //! Query
         $transaksi          = Transaksi::where('no_transaksi', $data_request['no_transaksi'])->first();
         $grand_total        = DetailTransaksi::where('transaksi_id', $data_request['no_transaksi'])->sum('subtotal');
+        $laporan            = Laporan::where('no_transaksi', $data_request['no_transaksi'])->first();
         
         //! Kondisi jika customer tidak menggunakan layanan antar jemput cucian 
         if (!$data_request['rupiah']) {
@@ -40,6 +43,12 @@ class DetailTransaksiController extends Controller
                 'ongkir'        => null,
                 'grand_total'   => $grand_total
             ]);
+
+            //! Update Master Laporan
+            $laporan->update([
+                'ongkir'           =>  null,
+                'grand_total'      => $grand_total
+            ]); 
         } else {
             //! Menggunakan layanan antar jemput cucian
 
@@ -50,6 +59,12 @@ class DetailTransaksiController extends Controller
                 'ongkir'        => $total_ongkir,
                 'grand_total'   => $grand_total + $total_ongkir
             ]);
+
+            //! Update Master Laporan 
+            $laporan->update([
+                'ongkir'           => $total_ongkir,
+                'grand_total'      => $grand_total + $total_ongkir
+            ]); 
         }
 
         return redirect('transaksi');
@@ -59,10 +74,17 @@ class DetailTransaksiController extends Controller
     {
         //! Query
         $transaksi = Transaksi::where('no_transaksi', $no_transaksi)->first(); 
+        $laporan   = Laporan::where('no_transaksi', $no_transaksi)->first();
 
         //! Update Status Transaksi
         $transaksi->update([
             'tgl_akhir' => Carbon::now(),
+            'status'    => 'Sukses'
+        ]); 
+
+        //! Update Status Laporan
+        $laporan->update([
+            'tgl_akhir' =>  Carbon::now(),
             'status'    => 'Sukses'
         ]); 
 
@@ -91,8 +113,9 @@ class DetailTransaksiController extends Controller
         $jenis_laundry      = JenisLaundry::where('id_jns_lndry', $dataRequest->id_jns_lndry)->first(); 
         $detail_transaksi   = DetailTransaksi::where('transaksi_id', $dataRequest->no_transaksi)->where('jenis_laundry_id', $dataRequest->id_jns_lndry)->first();
         $cek_jml            = DetailTransaksi::where('transaksi_id', $dataRequest->no_transaksi)->where('jenis_laundry_id', $dataRequest->id_jns_lndry)->count();
+        $detail_laporan     = DetailLaporan::where('transaksi_id', $dataRequest->no_transaksi)->where('jenis_laundry_id', $dataRequest->id_jns_lndry)->first();
 
-        //! Aritmatika
+        // ! Aritmatika
         $subtotal   = $dataRequest->jml * $jenis_laundry->harga;
 
         //! Pengecekan Jenis Paket
@@ -108,6 +131,12 @@ class DetailTransaksiController extends Controller
                 'jml'       => $total_jml,
                 'subtotal'  => $subtotal
             ]);
+
+            //! Update data detail laporan
+            $detail_laporan->update([
+                'jml'           => $total_jml,
+                'subtotal'      => $subtotal
+            ]); 
         } else {
             //! Jika data belum terdapat di table detail transaksi, maka ditambahkan 
 
@@ -119,14 +148,31 @@ class DetailTransaksiController extends Controller
                 'harga'             => $jenis_laundry->harga,
                 'subtotal'          => $subtotal
             ]);
+
+            //! Create Data Detail Laporan
+            DetailLaporan::create([
+                'transaksi_id'      => $dataRequest->no_transaksi,
+                'jenis_laundry_id'  => $dataRequest->id_jns_lndry,
+                'jml'               => $dataRequest->jml,
+                'harga'             => $jenis_laundry->harga,
+                'subtotal'          => $subtotal
+            ]); 
         }
 
         return redirect()->back();
     }
 
+    public function show($id)
+    {
+        # code...
+    }
+
     public function destroy($id)
     {
         $detail_transaksi = DetailTransaksi::where('id_dtl_transaksi', $id)->first();
+        $detail_laporan   = DetailLaporan::where('transaksi_id', $detail_transaksi->transaksi_id)->where('jenis_laundry_id', $detail_transaksi->jenis_laundry_id)->first();
+
+        $detail_laporan->delete();
         $detail_transaksi->delete();
 
         return redirect()->back();
