@@ -17,10 +17,11 @@ class CreateLaporanTable extends Migration
             $table->id('id_laporan');
             $table->string('no_transaksi');
             $table->string('nama_customer');
-            $table->date('tgl_awal');
-            $table->date('tgl_akhir');
-            $table->integer('ongkir');
-            $table->integer('grand_total');
+            $table->dateTime('tgl_awal')->nullable();
+            $table->dateTime('tgl_akhir')->nullable();
+            $table->string('status')->nullable();
+            $table->integer('ongkir')->nullable();
+            $table->integer('grand_total')->nullable();
             $table->timestamps();
         });
     }
