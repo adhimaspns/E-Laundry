@@ -20,4 +20,9 @@ class JenisLaundry extends Model
     {
         return $this->belongsTo(PaketLaundry::class, 'paket_laundry_id', 'id_pkt_lndry');
     }
+
+    public function detail_transaksi()
+    {
+        return $this->hasMany(DetailTransaksi::class, 'jenis_laundry_id', 'id_jns_lndry');
+    }
 }
