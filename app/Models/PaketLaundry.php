@@ -19,4 +19,9 @@ class PaketLaundry extends Model
     {
         return $this->hasMany(JenisLaundry::class, 'paket_laundry_id', 'id_pkt_lndry');
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'pkt_lndry_id', 'id_pkt_lndry');
+    }
 }
