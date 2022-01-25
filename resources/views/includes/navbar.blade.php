@@ -14,7 +14,7 @@
                     <a class="nav-link" href="{{ url('transaksi')}}">Transaksi</a>
                 </li>
                 <li class="nav-item @yield('laporan')">
-                    <a class="nav-link" href="#">Laporan</a>
+                    <a class="nav-link" href="{{ url('laporan') }}">Laporan</a>
                 </li>
                 <li class="nav-item dropdown @yield('settings')">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
