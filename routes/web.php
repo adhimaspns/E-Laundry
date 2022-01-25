@@ -38,3 +38,6 @@ use Illuminate\Support\Facades\Route;
     Route::post('checkout', 'DetailTransaksiController@detailTransaksi')->name('checkout'); 
     Route::get('checkout/{no_transaksi}', 'DetailTransaksiController@checkout');
 
+    //! Laporan
+    Route::resource('laporan', 'LaporanController'); 
+
