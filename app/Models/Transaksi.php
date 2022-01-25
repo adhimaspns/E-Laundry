@@ -18,4 +18,11 @@ class Transaksi extends Model
         'status',
         'grand_total'
     ];
+
+    protected $primaryKey = 'id_transaksi';
+
+    public function paket_laundry_transaksi()
+    {
+        return $this->belongsTo(PaketLaundry::class, 'pkt_lndry_id', 'id_pkt_lndry');
+    }
 }
