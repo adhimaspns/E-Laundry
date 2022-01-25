@@ -40,4 +40,5 @@ use Illuminate\Support\Facades\Route;
 
     //! Laporan
     Route::resource('laporan', 'LaporanController'); 
+    Route::get('laporan-json', 'LaporanController@laporan_json');
 
