@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use Carbon\Carbon;
 use App\Models\DetailTransaksi;
 use App\Models\JenisLaundry;
@@ -84,7 +85,8 @@ class TransaksiController extends Controller
             'status'                => "Diproses"
         ]);
 
-        return redirect('transaksi/checkout/'. $transaksi->no_transaksi);
+        // return redirect('transaksi/checkout/'. $transaksi->no_transaksi)->with('success', 'Data berhasil tersimpan');
+        return redirect('transaksi/checkout/'. $transaksi->no_transaksi)->with('success', 'Task Created Successfully!');
     }
 
     public function show($id)

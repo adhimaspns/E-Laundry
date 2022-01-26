@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\JenisLaundry;
 use Illuminate\Support\Str;
 use App\Models\PaketLaundry;
@@ -35,7 +36,7 @@ class PaketLaundryController extends Controller
             'slug'           => Str::slug($request->nama_paket)
         ]); 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Task Created Successfully!');
     }
     
     public function edit($id)
@@ -65,7 +66,7 @@ class PaketLaundryController extends Controller
             'slug'           => Str::slug($request->nama_paket)
         ]); 
 
-        return redirect('paket-laundry');
+        return redirect('paket-laundry')->withSuccess('Task Created Successfully!');
     }
 
     public function destroy($id)
@@ -73,7 +74,7 @@ class PaketLaundryController extends Controller
         $paket_laundry = PaketLaundry::findOrFail($id);
         $paket_laundry->delete();
 
-        return redirect('paket-laundry');
+        return redirect('paket-laundry')->with('success', 'Task Created Successfully!');
     }
 
     //! Jenis Laundry

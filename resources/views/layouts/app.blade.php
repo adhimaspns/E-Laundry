@@ -8,6 +8,7 @@
         <!-- My Css -->
         @stack('css-prepend')
         @include('includes.styles')
+        @include('sweetalert::alert')
 
         <title>@yield('title-page')</title>
 

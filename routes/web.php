@@ -41,4 +41,6 @@ use Illuminate\Support\Facades\Route;
     //! Laporan
     Route::resource('laporan', 'LaporanController'); 
     Route::get('laporan-json', 'LaporanController@laporan_json');
+    Route::get('export-excel/{no_transaksi}', 'LaporanController@export_excel');
+    Route::post('export-pdfbydate', 'LaporanController@export_pdf_date');
 
