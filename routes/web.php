@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Route;
     Route::resource('detail-transaksi', 'DetailTransaksiController'); 
     Route::post('checkout', 'DetailTransaksiController@detailTransaksi')->name('checkout'); 
     Route::get('checkout/{no_transaksi}', 'DetailTransaksiController@checkout');
+    Route::get('checkout/cetak-nota/{no_transaksi}', 'DetailTransaksiController@cetak_nota');
 
     //! Laporan
     Route::resource('laporan', 'LaporanController'); 
