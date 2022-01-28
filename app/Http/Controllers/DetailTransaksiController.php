@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\DetailLaporan;
 use Carbon\Carbon;
 use App\Models\DetailTransaksi;
@@ -67,7 +68,8 @@ class DetailTransaksiController extends Controller
             ]); 
         }
 
-        return redirect('transaksi');
+        return redirect('checkout/cetak-nota/'. $data_request['no_transaksi']);
+        // return redirect('transaksi');
     }
 
     public function checkout($no_transaksi)
@@ -176,5 +178,16 @@ class DetailTransaksiController extends Controller
         $detail_transaksi->delete();
 
         return redirect()->back();
+    }
+
+    public function cetak_nota($no_transaksi)
+    {
+        $data_transaksi     = Transaksi::where('no_transaksi', $no_transaksi)->with(['paket_laundry_transaksi'])->first();
+        $detail_transaksi   = DetailTransaksi::where('transaksi_id', $no_transaksi)->with(['jns_lndry'])->get();
+
+        $pdf            = PDF::loadview('pages.transaksi.nota_pengambilan', compact('data_transaksi', 'detail_transaksi'));
+        return $pdf->download('nota-pengambilan.pdf');
+        return redirect()->back();
+        // return view('pages.transaksi.nota_pengambilan', compact('data_transaksi', 'detail_transaksi'));
     }
 }
