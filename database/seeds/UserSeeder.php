@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         $user = [
             'nama'           => "Operator",
-            'username'       => "opeator",
+            'username'       => "operator",
             'password'       => bcrypt('operator123'),
             'level'          => 'Operator',
             'created_at'     => Carbon::now()
