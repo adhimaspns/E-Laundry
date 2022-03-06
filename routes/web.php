@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
     //! AUTH 
-    Route::get('login', 'AuthController@login');
+    Route::get('/', 'AuthController@login');
     Route::post('proses-login', 'AuthController@proses_login');
     Route::post('proses-logout', 'AuthController@logout');
 
@@ -49,7 +49,3 @@ use Illuminate\Support\Facades\Route;
         Route::get('export-excel/{no_transaksi}', 'LaporanController@export_excel');
         Route::post('export-pdfbydate', 'LaporanController@export_pdf_date');
     });
-
-    Auth::routes();
-
-    Route::get('/home', 'HomeController@index')->name('home');

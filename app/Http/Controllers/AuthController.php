@@ -17,7 +17,7 @@ class AuthController extends Controller
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             return redirect('/dashboard');
         } else {
-            return redirect()->back()->with('gagal-login', 'Username dan password salah!');
+            return redirect('/')->with('gagal-login', 'Username dan password salah!');
         }
     }
 
@@ -25,6 +25,6 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect('login')->with('sukses-logout', 'Berhasil logout');
+        return redirect('/')->with('sukses-logout', 'Berhasil logout');
     }
 }

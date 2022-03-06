@@ -27,7 +27,7 @@
                     <div class="alert alert-danger" role="alert">
                         {{ session('gagal-login')}}
 
-                        <a href="{{ route('login') }}" style="float: right;"> 
+                        <a href="{{ url('/') }}" style="float: right;"> 
                             x
                         </a>
                     </div>  
@@ -36,7 +36,7 @@
                     <div class="alert alert-success" role="alert">
                         {{ session('sukses-logout')}}
 
-                        <a href="{{ route('login') }}" style="float: right;"> 
+                        <a href="{{ url('/') }}" style="float: right;"> 
                             x
                         </a>
                     </div>  
