@@ -36,7 +36,7 @@ class DetailTransaksiController extends Controller
         $laporan            = Laporan::where('no_transaksi', $data_request['no_transaksi'])->first();
         
         //! Kondisi jika customer tidak menggunakan layanan antar jemput cucian 
-        if (!$data_request['rupiah']) {
+        if (!$data_request['jarak']) {
             //! Tidak menggunakan layanan antar jemput cucian
 
             //! Update Master Transaksi
@@ -53,7 +53,7 @@ class DetailTransaksiController extends Controller
         } else {
             //! Menggunakan layanan antar jemput cucian
 
-            $total_ongkir   = $request->jarak * preg_replace("/[^0-9]/", "", $request->rupiah); 
+            $total_ongkir   = $request->jarak * 2500; 
 
             //! Update Master Transaksi
             $transaksi->update([

@@ -21,8 +21,8 @@
 
 @section('main-content')
 <div class="container">
-    <div class="row">
-        <div class="col-lg-6 margin-top-50">
+    <div class="row justify-content-center">
+        {{-- <div class="col-lg-6 margin-top-50">
             <div class="card">
                 <div class="card-header text-center">
                     Jenis Laundry
@@ -66,9 +66,9 @@
                     </form>
                 </div>  
             </div>
-        </div>
+        </div> --}}
 
-        <div class="col-lg-4 offset-lg-2">
+        <div class="col-lg-8">
             <div class="card margin-top-50">
                 <div class="card-header text-center">
                     <b>Invoice</b>
@@ -91,6 +91,42 @@
 
                     <hr>
 
+                    <form action="{{ route('detail-transaksi.store') }}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label>Jenis Laundry</label>
+                            <select name="id_jns_lndry" class="form-control  @error('id_jns_lndry') is-invalid @enderror">
+                                @foreach ($jenis_laundry as $jl)
+                                    @if (Request::old('id_jns_lndry') == $jl->id_jns_lndry)
+                                        <option value="{{ $jl->id_jns_lndry }}" selected>{{ $jl->jenis_laundry }} | Rp. {{ number_format($jl->harga,0,',','.' ) }}</option>
+                                    @else
+                                        <option value="{{ $jl->id_jns_lndry }}">{{ $jl->jenis_laundry }} | Rp. {{ number_format($jl->harga,0,',','.' ) }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('id_jns_lndry')
+                                <div class="invalid-feedback">{{ $message}}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jumlah</label>
+                            <input type="text" name="jml" class="form-control  @error('jml') is-invalid @enderror" value="{{ old('jml') }}">
+                            @error('jml')
+                                <div class="invalid-feedback">{{ $message}}</div>
+                            @enderror
+                        </div>
+
+                        <input type="hidden" name="no_transaksi" value="{{ $transaksi->no_transaksi}}">
+                        <input type="hidden" name="id_pkt_lndry" value="{{ $paket_laundry->id_pkt_lndry}}">
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Simpan
+                        </button>
+                    </form>
+
+                    <hr>
+
                     <form action="{{ url('checkout') }}" method="POST">
                         @csrf
                         <p class="lead">Layanan Antar Jemput Cucian <i>(optional)</i> </p>
@@ -99,10 +135,9 @@
                             <div class="col">
                                 <label>Jarak (Km)</label>
                                 <input type="number" min="1" name="jarak" class="form-control" placeholder="1">
-                            </div>
-                            <div class="col">
-                                <label>Rupiah</label>
-                                <input type="text" id="harga" name="rupiah" class="form-control">
+                                <p class="text-muted">
+                                    Ongkir Rp. 2.500/Km
+                                </p>
                             </div>
                         </div>
     
@@ -173,6 +208,9 @@
                     </table>
                 </div>
             </div>
+            <a href="{{ url('transaksi') }}" class="btn btn-secondary" style="margin-top: 20px;">
+                Kembali
+            </a>
         </div>
     </div>
 </div>
