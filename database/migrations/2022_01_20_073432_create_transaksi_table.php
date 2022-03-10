@@ -17,6 +17,8 @@ class CreateTransaksiTable extends Migration
             $table->id('id_transaksi');
             $table->string('no_transaksi');
             $table->string('nama_customer');
+            $table->string('no_telp');
+            $table->text('alamat');
             $table->string('pkt_lndry_id');
             $table->date('tgl_awal')->nullable();
             $table->date('tgl_akhir')->nullable();
