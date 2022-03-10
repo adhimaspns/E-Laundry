@@ -17,6 +17,8 @@ class CreateLaporanTable extends Migration
             $table->id('id_laporan');
             $table->string('no_transaksi');
             $table->string('nama_customer');
+            $table->string('no_telp');
+            $table->text('alamat');
             $table->dateTime('tgl_awal')->nullable();
             $table->dateTime('tgl_akhir')->nullable();
             $table->string('status')->nullable();
