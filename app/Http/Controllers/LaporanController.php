@@ -138,8 +138,8 @@ class LaporanController extends Controller
         $tgl_akhir      = $request->tgl_akhir;
 
         //! Query 
-        $data_laporan   = Laporan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->where('status', 'Sukses')->get(); 
-        $sum            = Laporan::whereBetween('created_at', [$tgl_awal, $tgl_akhir])->where('status', 'Sukses')->sum('grand_total');
+        $data_laporan   = Laporan::whereDate('created_at', '>=', $tgl_awal)->whereDate('created_at', '<=', $tgl_akhir)->where('status', 'Sukses')->get(); 
+        $sum            = Laporan::whereDate('created_at', '>=', $tgl_awal)->whereDate('created_at', '<=', $tgl_akhir)->where('status', 'Sukses')->sum('grand_total');
 
         $pdf            = PDF::loadview('pages.laporan.export_bydate', compact('data_laporan', 'sum', 'tgl_awal', 'tgl_akhir'));
         return $pdf->download('laporan-transaksi.pdf');
