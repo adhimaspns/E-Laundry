@@ -71,6 +71,8 @@ class TransaksiController extends Controller
 
         $transaksi->no_transaksi    = $no_transaksi_baru;
         $transaksi->nama_customer   = $request->nama_customer;
+        $transaksi->no_telp         = $request->no_telp;
+        $transaksi->alamat          = $request->alamat;
         $transaksi->pkt_lndry_id    = $request->id_pkt_lndry;
         $transaksi->tgl_awal        = Carbon::now();
         $transaksi->status          = "Diproses";
@@ -81,11 +83,12 @@ class TransaksiController extends Controller
         Laporan::create([
             'no_transaksi'          => $no_transaksi_baru,
             'nama_customer'         => $request->nama_customer,
+            'no_telp'               => $request->no_telp,
+            'alamat'                => $request->alamat,
             'tgl_awal'              => Carbon::now(),
             'status'                => "Diproses"
         ]);
 
-        // return redirect('transaksi/checkout/'. $transaksi->no_transaksi)->with('success', 'Data berhasil tersimpan');
         return redirect('transaksi/checkout/'. $transaksi->no_transaksi)->with('success', 'Task Created Successfully!');
     }
 
