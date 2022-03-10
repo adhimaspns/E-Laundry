@@ -54,6 +54,14 @@
                 <td>: {{ $data_transaksi->nama_customer }}</td>
             </tr>
             <tr>
+                <td>Nomor Telepon</td>
+                <td>: {{ $data_transaksi->no_telp }}</td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td>: {{ $data_transaksi->alamat }}</td>
+            </tr>
+            <tr>
                 <td>Paket</td>
                 <td>: {{ $data_transaksi->paket_laundry_transaksi->nama_paket }}</td>
             </tr>
@@ -93,7 +101,7 @@
                         @if ($data_transaksi->ongkir != null)
                             {{ number_format($data_transaksi->ongkir) }}
                         @else
-                            <td> - </td>
+                            - 
                         @endif
                     </td>
                 </tr>

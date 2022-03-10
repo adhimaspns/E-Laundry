@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Export Excel</title>
+    <title>Laporan Transaksi</title>
 </head>
 
 <body>
@@ -33,6 +33,8 @@
                         <th>No</th>
                         <th>No Transaksi</th>
                         <th>Nama</th>
+                        <th>Nomor Telepon</th>
+                        <th>Alamat</th>
                         <th>Tanggal Awal</th>
                         <th>Tanggal Akhir</th>
                         <th>Status</th>
@@ -49,6 +51,8 @@
                             <td>{{ $no }}</td>
                             <td>{{ $dl->no_transaksi }}</td>
                             <td>{{ $dl->nama_customer }}</td>
+                            <td>{{ $dl->no_telp }}</td>
+                            <td>{{ $dl->alamat }}</td>
                             <td>{{ date('d M Y', strtotime($dl->tgl_awal)) }}</td>
                             <td>{{ date('d M Y', strtotime($dl->tgl_akhir)) }}</td>
                             <td>{{ $dl->status }}</td>
@@ -60,7 +64,7 @@
                     ?>
                     @endforeach
                     <tr>
-                        <td colspan="7" style="text-align: center">Total</td>
+                        <td colspan="9" style="text-align: center">Total</td>
                         <td>{{ number_format($sum) }}</td>
                     </tr>
                 </tbody>

@@ -25,6 +25,14 @@
                             <td>: {{ $transaksi->nama_customer }}</td>
                         </tr>
                         <tr>
+                            <td>Nomor Telepon</td>
+                            <td>: {{ $transaksi->no_telp }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>: {{ $transaksi->alamat }}</td>
+                        </tr>
+                        <tr>
                             <td>Tanggal Masuk</td>
                             <td>: {{ $transaksi->tgl_awal }}</td>
                         </tr>

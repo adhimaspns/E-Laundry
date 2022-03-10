@@ -25,6 +25,14 @@
                             <td>: {{ $laporan->nama_customer }}</td>
                         </tr>
                         <tr>
+                            <td>Nomor Telepon</td>
+                            <td>: {{ $laporan->no_telp }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>: {{ $laporan->alamat }}</td>
+                        </tr>
+                        <tr>
                             <td>Tanggal Masuk</td>
                             <td>: {{ date('d M Y - H:i:s', strtotime($laporan->tgl_awal)) }}</td>
                         </tr>

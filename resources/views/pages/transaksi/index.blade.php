@@ -51,6 +51,24 @@
                                             </div>
                                         @enderror
                                     </div>
+                                    <div class="form-group">
+                                        <label>Nomor Telepon</label>
+                                        <input type="number" name="no_telp" class="form-control @error('no_telp') is-invalid  @enderror" placeholder="min:11" value="{{ old('no_telp') }}">
+                                        @error('no_telp')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Alamat</label>
+                                        <textarea name="alamat" class="form-control" placeholder="Dsn. Mlaten Ds. Mlaten RT/RW 001/002">{{ old('no_telp') }}</textarea>
+                                        @error('no_telp')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -68,6 +86,8 @@
                                 <th>No</th>
                                 <th>No Transaksi</th>
                                 <th>Nama Customer</th>
+                                <th>Nomor Telepon</th>
+                                <th>Alamat</th>
                                 <th>Status</th>
                                 <th>Total</th>
                                 <th>Tanggal Masuk</th>
@@ -105,6 +125,8 @@
 
                 {data: 'no_transaksi',  name: 'no_transaksi'},
                 {data: 'nama_customer', name: 'nama_customer'},
+                {data: 'no_telp', name: 'no_telp'},
+                {data: 'alamat', name: 'alamat'},
                 {data: 'status',        name: 'status'},
                 {data: 'grand_total',   name: 'grand_total'},
                 {data: 'created_at',   name: 'created_at'},
