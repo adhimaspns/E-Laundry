@@ -11,6 +11,8 @@ class Laporan extends Model
     protected $fillable     = [
         'no_transaksi',
         'nama_customer',
+        'no_telp',
+        'alamat',
         'tgl_awal',
         'tgl_akhir',
         'status',
