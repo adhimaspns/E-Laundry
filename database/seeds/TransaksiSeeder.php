@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use App\Models\Transaksi;
 use Illuminate\Database\Seeder;
 
@@ -16,12 +17,15 @@ class TransaksiSeeder extends Seeder
             [
                 'no_transaksi'      => 202201280001,
                 'nama_customer'     => 'Muslimin',
+                'no_telp'           => '081615227898',
+                'alamat'            => 'Dsn. Mlaten Ds. Mlaten RT/RW 001/002',
                 'pkt_lndry_id'      => 1,
                 'tgl_awal'          => date('Y-m-d'), 
                 'tgl_akhir'         => date('Y-m-d'),
                 'ongkir'            => 7500,
                 'status'            => "Diproses",
-                'grand_total'       => 157500   
+                'grand_total'       => 157500,
+                'created_at'        => Carbon::now()   
             ],
 
             // [
