@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
         Route::resource('/transaksi', 'TransaksiController');
         Route::get('transaksi-json', 'TransaksiController@transaksiJson'); 
         Route::get('/transaksi/checkout/{no_transaksi}', 'DetailTransaksiController@kasir');
+        Route::get('dashboard-transaksi', 'TransaksiController@dashboardJson');
 
         //! Detail Transaksi
         Route::resource('detail-transaksi', 'DetailTransaksiController'); 

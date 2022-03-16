@@ -44,6 +44,28 @@ class TransaksiController extends Controller
                 ->make(true);
     }
 
+    public function dashboardJson()
+    {
+        $data_transaksi     = Transaksi::where('status', 'Diproses')->where('created_at', '>=', Carbon::today())->where('grand_total', '!=', null)->orderBy('id_transaksi', 'DESC')->get();
+        return DataTables::of($data_transaksi)
+                ->addIndexColumn()
+                ->addColumn('action', function($data){
+                    $button = '<a href="transaksi/'.$data->no_transaksi.'" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>';
+                    $button .= '&nbsp;&nbsp;'; 
+                    $button .= '<a href="checkout/'. $data->no_transaksi.'" class="btn btn-success btn-sm "><i class="fas fa-dollar-sign"></i> Checkout</a>';
+
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->addColumn('created_at', function($data){
+                    return date('d M Y - H:i:s', strtotime($data->created_at));
+                })
+                ->addColumn('grand_total', function($data){
+                    return "Rp. ". number_format($data->grand_total,0,',','.');
+                })
+                ->make(true);
+    }
+
     public function store(Request $request)
     {
         //! Validasi
