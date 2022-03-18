@@ -33,6 +33,7 @@ class DetailTransaksiController extends Controller
         //! Query
         $transaksi          = Transaksi::where('no_transaksi', $data_request['no_transaksi'])->first();
         $grand_total        = DetailTransaksi::where('transaksi_id', $data_request['no_transaksi'])->sum('subtotal');
+        $jml_cucian         = DetailTransaksi::where('transaksi_id', $data_request['no_transaksi'])->sum('jml');
         $laporan            = Laporan::where('no_transaksi', $data_request['no_transaksi'])->first();
         
         //! Kondisi jika customer tidak menggunakan layanan antar jemput cucian 
@@ -67,6 +68,11 @@ class DetailTransaksiController extends Controller
                 'grand_total'      => $grand_total + $total_ongkir
             ]); 
         }
+
+        //! Update jml data transaksi
+        $transaksi->update([
+            'jml' => $jml_cucian
+        ]);
 
         return redirect('checkout/cetak-nota/'. $data_request['no_transaksi']);
         // return redirect('transaksi');
