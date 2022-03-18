@@ -24,6 +24,7 @@ class TransaksiSeeder extends Seeder
                 'tgl_akhir'         => date('Y-m-d'),
                 'ongkir'            => 7500,
                 'status'            => "Diproses",
+                'jml'               => 5,
                 'grand_total'       => 157500,
                 'created_at'        => Carbon::now()   
             ],
