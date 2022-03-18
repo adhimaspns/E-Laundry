@@ -18,8 +18,10 @@ class TransaksiController extends Controller
     public function index()
     {
         $paket_laundry = PaketLaundry::all();
+        $transaksi     = Transaksi::where('created_at', '>=', Carbon::today())
+                                    ->sum('jml');
 
-        return view('pages.transaksi.index', compact('paket_laundry'));
+        return view('pages.transaksi.index', compact('paket_laundry', 'transaksi'));
     }
 
     public function transaksiJson()
