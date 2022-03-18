@@ -24,6 +24,7 @@ class CreateTransaksiTable extends Migration
             $table->date('tgl_akhir')->nullable();
             $table->integer('ongkir')->nullable();
             $table->string('status')->nullable();
+            $table->string('jml')->nullable();
             $table->integer('grand_total')->nullable();
             $table->timestamps();
         });
