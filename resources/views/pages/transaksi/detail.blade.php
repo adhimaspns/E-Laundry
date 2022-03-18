@@ -91,11 +91,13 @@
 
                     <hr>
 
+                    <h2 class="text-center">Paket Laundry</h2>
+
                     <form action="{{ route('detail-transaksi.store') }}" method="post">
                         @csrf
                         <div class="form-group">
                             <label>Jenis Laundry</label>
-                            <select name="id_jns_lndry" class="form-control  @error('id_jns_lndry') is-invalid @enderror">
+                            <select name="id_jns_lndry" class="form-control form-control-lg @error('id_jns_lndry') is-invalid @enderror">
                                 @foreach ($jenis_laundry as $jl)
                                     @if (Request::old('id_jns_lndry') == $jl->id_jns_lndry)
                                         <option value="{{ $jl->id_jns_lndry }}" selected>{{ $jl->jenis_laundry }} | Rp. {{ number_format($jl->harga,0,',','.' ) }}</option>
@@ -111,7 +113,7 @@
 
                         <div class="form-group">
                             <label>Jumlah</label>
-                            <input type="text" name="jml" class="form-control  @error('jml') is-invalid @enderror" value="{{ old('jml') }}">
+                            <input type="text" name="jml" class="form-control form-control-lg @error('jml') is-invalid @enderror" value="{{ old('jml') }}">
                             @error('jml')
                                 <div class="invalid-feedback">{{ $message}}</div>
                             @enderror
@@ -120,12 +122,12 @@
                         <input type="hidden" name="no_transaksi" value="{{ $transaksi->no_transaksi}}">
                         <input type="hidden" name="id_pkt_lndry" value="{{ $paket_laundry->id_pkt_lndry}}">
 
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button type="submit" class="btn btn-primary float-right">
                             Simpan
                         </button>
                     </form>
 
-                    <hr>
+                    <hr style="margin-top: 70px;">
 
                     <form action="{{ url('checkout') }}" method="POST">
                         @csrf
@@ -134,7 +136,7 @@
                         <div class="row">
                             <div class="col">
                                 <label>Jarak (Km)</label>
-                                <input type="number" min="1" name="jarak" class="form-control" placeholder="1">
+                                <input type="number" min="1" name="jarak" class="form-control form-control-sm" placeholder="1">
                                 <p class="text-muted">
                                     Ongkir Rp. 2.500/Km
                                 </p>

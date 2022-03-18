@@ -12,9 +12,16 @@
         <div class="col-lg-12">
             <div class="card-body margin-top-100">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary margin-btn" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-plus"></i> Transaksi
-                </button>
+                @if ($transaksi > 100)
+                    <button type="button" class="btn btn-primary margin-btn" disabled>
+                        <i class="fa fa-plus"></i> Transaksi
+                    </button>
+                    <small class="text-danger">* Jumlah melebihi kuota harian yaitu 100Kg</small>
+                @else
+                    <button type="button" class="btn btn-primary margin-btn" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-plus"></i> Transaksi
+                    </button>
+                @endif
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
