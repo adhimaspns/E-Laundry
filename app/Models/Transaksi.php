@@ -18,6 +18,7 @@ class Transaksi extends Model
         'tgl_akhir',
         'ongkir',
         'status',
+        'jml',
         'grand_total'
     ];
 
