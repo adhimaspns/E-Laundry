@@ -11,6 +11,13 @@
     <title>Laporan Transaksi</title>
 </head>
 
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
 <body>
         <section class="content">
             <h2>Laporan Transaksi</h2>
