@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <div class="card-body margin-top-100">
                 <!-- Button trigger modal -->
-                @if ($transaksi > 100)
+                @if ($transaksi >= 100)
                     <button type="button" class="btn btn-primary margin-btn" disabled>
                         <i class="fa fa-plus"></i> Transaksi
                     </button>
